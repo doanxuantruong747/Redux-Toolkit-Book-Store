@@ -13,17 +13,6 @@
     },
     {
       "author": "Unknown",
-      "country": "Iceland",
-      "imageLink": "images/njals-saga.jpg",
-      "language": "Old Norse",
-      "link": "https://en.wikipedia.org/wiki/Nj%C3%A1ls_saga\n",
-      "pages": 384,
-      "title": "Njál's Saga",
-      "year": 1350,
-      "id": "DD6341E90F6"
-    },
-    {
-      "author": "Unknown",
       "country": "Sumer and Akkadian Empire",
       "imageLink": "images/the-epic-of-gilgamesh.jpg",
       "language": "Akkadian",
@@ -32,6 +21,17 @@
       "title": "The Epic Of Gilgamesh",
       "year": -1700,
       "id": "4F45963BC33"
+    },
+    {
+      "author": "William Faulkner",
+      "country": "United States",
+      "imageLink": "images/the-sound-and-the-fury.jpg",
+      "language": "English",
+      "link": "https://en.wikipedia.org/wiki/The_Sound_and_the_Fury\n",
+      "pages": 326,
+      "title": "The Sound and the Fury",
+      "year": 1929,
+      "id": "3497DCEB7931"
     }
   ],
   "books": [

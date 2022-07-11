@@ -5,42 +5,32 @@ import { Container, Alert, Box, Card, Stack, CardMedia, CardActionArea, Typograp
 import { FormProvider } from "../../form";
 import { useForm } from "react-hook-form";
 import SearchForm from "../../components/SearchForm";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PaginationBar from "../../components/PaginationBar";
-import api from "../../app/apiService";
+import { getBooks, setQuery } from "./homePageSlice";
 const BACKEND_API = process.env.REACT_APP_BACKEND_API;
 
 
 const HomePage = () => {
-  const { pageNum, limit, searchQuery } = useSelector((state) => state.books)
-
-  const [books, setBooks] = useState([]);
+  const { pageNum, limit, searchQuery, books, query, errorMessage } = useSelector((state) => state.books)
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        let url = `/books?_page=${pageNum}&_limit=${limit}`;
-        if (query) url += `&q=${query}`;
-        const res = await api.get(url);
-        setBooks(res.data);
-        setErrorMessage("");
-      } catch (error) {
-        setErrorMessage(error.message);
-      }
-      setLoading(false);
-    };
-    fetchData();
-  }, [pageNum, limit, query]);
+    setLoading(true)
+    dispatch(getBooks(pageNum, limit, query, errorMessage))
+    setLoading(false)
+  }, [dispatch, pageNum, limit, query, errorMessage])
+
 
   //--------------form
+
   const methods = useForm({ searchQuery });
   const { handleSubmit } = methods;
   const onSubmit = (data) => {
-    setQuery(data.searchQuery);
+    dispatch(setQuery(data.searchQuery))
+
   };
   //-------------ClickDetail
   const navigate = useNavigate()
